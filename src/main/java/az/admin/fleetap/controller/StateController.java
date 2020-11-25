@@ -14,15 +14,20 @@ import java.util.Optional;
 @Controller
 public class StateController {
     private StateService stateService;
+    private CountryService countryService;
 
-    public StateController(StateService stateService) {
+    public StateController(StateService stateService, CountryService countryService) {
         this.stateService = stateService;
+        this.countryService = countryService;
     }
 
     @GetMapping("/states")
     public String getStates(Model model) {
         List<State> states = stateService.getStates();
         model.addAttribute("states", states);
+
+        List<Country> countries = countryService.getCountries();
+        model.addAttribute("countries", countries);
         return "state";
     }
 

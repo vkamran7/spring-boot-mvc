@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    $('table #editButton').on('click', function (event) {
+    $('.table #editButton').on('click', function (event) {
         event.preventDefault();
         let href = $(this).attr('href');
         $.get(href, function (country, status) {
@@ -10,9 +10,24 @@ $(document).ready(function () {
             $('#codeEdit').val(country.code);
             $('#continentEdit').val(country.continent);
             $('#nationalityEdit').val(country.nationality);
-        })
+        });
 
         $('#editModal').modal();
+    });
+
+    $('.table #detailsButton').on('click', function (event) {
+        event.preventDefault();
+        let href = $(this).attr('href');
+        $.get(href, function (country, status) {
+            $('#idEdit').val(country.id);
+            $('#descriptionEdit').val(country.description);
+            $('#capitalEdit').val(country.capital);
+            $('#codeEdit').val(country.code);
+            $('#continentEdit').val(country.continent);
+            $('#nationalityEdit').val(country.nationality);
+        });
+
+        $('#detailsModal').modal();
     });
 
     $('table #deleteButton').on('click', function (event) {

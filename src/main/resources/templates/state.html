@@ -406,31 +406,30 @@
                 </div>
             </div>
             <!-- page start-->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">New Country
+            <button type="button" id="addButton" class="btn btn-primary" data-toggle="modal" data-target="#addModal">New State
             </button>
 
             <table class="table">
                 <thead>
                 <tr>
-                    <th>id</th>
-                    <th>Description</th>
-                    <th>Capital</th>
-                    <th>Code</th>
+                    <th class="icon_table">id</th>
+                    <th class="icon_table">Name</th>
+                    <th class="icon_table">Details</th>
+                    <th class="icon_cogs">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="state:${states}">
-                    <td th:text="${country.id}"></td>
-                    <td th:text="${country.description}"></td>
-                    <td th:text="${country.capital}"></td>
-                    <td th:text="${country.code}"></td>
+                    <td th:text="${state.id}">Id</td>
+                    <td th:text="${state.name}">Name</td>
+                    <td th:text="${state.details}">Details</td>
                     <td>
                         <div class="btn-group">
-                            <a th:href="@{/countries/findById(id=${country.id})}" class="btn btn-primary"
+                            <a th:href="@{/states/findById(id=${state.id})}" class="btn btn-primary"
                                id="editButton"><i class="icon_pencil-edit"></i></a>
-                            <a class="btn btn-success"
+                            <a th:href="@{/states/findById(id=${state.id})}" class="btn btn-success"
                                id="detailsButton"><i class="icon_document_alt"></i></a>
-                            <a th:href="@{/countries/delete(id=${country.id})}" class="btn btn-danger"
+                            <a th:href="@{/states/delete(id=${state.id})}" class="btn btn-danger"
                                id="deleteButton"><i class="icon_close_alt2"></i></a>
                         </div>
                     </td>
@@ -467,10 +466,22 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form th:action="@{/countries/addNew}" method="post">
+                <form th:action="@{/states/addNew}" method="post">
+
                     <div class="form-group">
-                        <label for="description" class="col-form-label">Description:</label>
-                        <input type="text" class="form-control" id="description" name="description">
+                        <label for="ddlCountryAdd" class="col-form-label">Country:</label>
+                        <select class="form-control" id="ddlCountryAdd" name="countryid">
+                            <option>-SELECT-</option>
+                            <option th:each="country : ${countries}"
+                                    th:value="${country.id}"
+                                    th:text="${country.description}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name">
                     </div>
                     <div class="form-group">
                         <label for="capital" class="col-form-label">Capital:</label>
@@ -485,8 +496,8 @@
                         <input type="text" class="form-control" id="continent" name="continent">
                     </div>
                     <div class="form-group">
-                        <label for="nationality" class="col-form-label">Nationality:</label>
-                        <input type="text" class="form-control" id="nationality" name="nationality">
+                        <label for="details" class="col-form-label">Details:</label>
+                        <input type="text" class="form-control" id="details" name="details" readonly>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -522,7 +533,7 @@
 
                     <div class="form-group">
                         <label for="ddlCountryDetails" class="col-form-label">Country:</label>
-                        <select class="form-control" id="ddlCountryDetails" name="countryid">
+                        <select class="form-control" id="ddlCountryEdit" name="countryid">
                             <option>-SELECT-</option>
                             <option th:each="country : ${countries}"
                                     th:value="${country.id}"
@@ -564,6 +575,72 @@
     </div>
 </div>
 
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <form>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModalLabel">State Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-form-label">Id:</label>
+                        <input type="text" class="form-control" id="idDetails" name="id" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ddlCountryDetails" class="col-form-label">Country: </label>
+                        <select class="form-control" id="ddlCountryDetails" name="countryid">
+                            <option>-SELECT-</option>
+                            <option th:each="country : ${countries}"
+                                    th:value="${country.id}"
+                                    th:text="${country.description}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="nameDetails" name="name" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="codeDetails" class="col-form-label">Code:</label>
+                        <input type="text" class="form-control" id="codeDetails" name="code" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="capitalDetails" class="col-form-label">Capital:</label>
+                        <input type="text" class="form-control" id="capitalDetails" name="capital" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Details:</label>
+                        <input type="text" class="form-control" id="detailsDetails" name="details" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Last Updated By:</label>
+                        <input type="text" class="form-control" id="lastModifiedByDetails" name="lastModifiedBy" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Last Updated On:</label>
+                        <input type="text" class="form-control" id="lastModifiedDateDetails" name="lastModifiedDate" readonly>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
 <!--  DELETE MODAL-->
 <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -592,6 +669,7 @@
 <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
 <!--custome script for all page-->
 <script src="js/scripts.js"></script>
+<script src="js/state.js"></script>
 
 
 </body>
