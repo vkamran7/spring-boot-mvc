@@ -1,11 +1,11 @@
 
 $(document).ready(function () {
-    $('.table #addButton').on('click', function (event) {
+    $('.table #editButton').on('click', function (event) {
         event.preventDefault();
         let href = $(this).attr('href');
         $.get(href, function (state, status) {
             $('#idEdit').val(state.id);
-            $('#ddlCountryAdd').val(state.countryid);
+            $('#ddlCountryEdit').val(state.countryid);
             $('#capitalEdit').val(state.capital);
             $('#codeEdit').val(state.code);
             $('#nameEdit').val(state.name);
@@ -19,7 +19,9 @@ $(document).ready(function () {
         event.preventDefault();
         let href = $(this).attr('href');
         $.get(href, function (state, status) {
-            $('#idEdit').val(state.id);
+            $('#idDetails').val(state.id);
+            $('#codeDetails').val(state.code);
+            $('#capitalDetails').val(state.capital);
             $('#ddlCountryDetails').val(state.countryid);
             $('#nameDetails').val(state.name);
             $('#detailsDetails').val(state.details);

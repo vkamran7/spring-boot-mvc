@@ -312,83 +312,8 @@
     <!--header end-->
 
     <!--sidebar start-->
-    <aside>
-        <div id="sidebar" class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu">
-                <li class="">
-                    <a class="" href="index.html">
-                        <i class="icon_house_alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon_document_alt"></i>
-                        <span>Forms</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="form_component.html">Form Elements</a></li>
-                        <li><a class="" href="form_validation.html">Form Validation</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon_desktop"></i>
-                        <span>UI Fitures</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="general.html">Components</a></li>
-                        <li><a class="" href="buttons.html">Buttons</a></li>
-                        <li><a class="" href="grids.html">Grids</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="" href="widgets.html">
-                        <i class="icon_genius"></i>
-                        <span>Widgets</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="chart-chartjs.html">
-                        <i class="icon_piechart"></i>
-                        <span>Charts</span>
+    <aside th:replace="index.html :: sidebar">
 
-                    </a>
-
-                </li>
-
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon_table"></i>
-                        <span>Tables</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="basic_table.html">Basic Table</a></li>
-                    </ul>
-                </li>
-
-                <li class="sub-menu ">
-                    <a href="javascript:;" class="">
-                        <i class="icon_documents_alt"></i>
-                        <span>Pages</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="profile.html">Profile</a></li>
-                        <li><a class="" href="login.html"><span>Login Page</span></a></li>
-                        <li><a class="" href="contact.html"><span>Contact Page</span></a></li>
-                        <li><a class="active" href="blank.html">Blank Page</a></li>
-                        <li><a class="" href="404.html">404 Error</a></li>
-                    </ul>
-                </li>
-
-            </ul>
-            <!-- sidebar menu end-->
-        </div>
     </aside>
     <!--sidebar end-->
 
@@ -412,10 +337,10 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th class="icon_table">id</th>
-                    <th class="icon_table">Name</th>
-                    <th class="icon_table">Details</th>
-                    <th class="icon_cogs">Action</th>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Details</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -497,7 +422,7 @@
                     </div>
                     <div class="form-group">
                         <label for="details" class="col-form-label">Details:</label>
-                        <input type="text" class="form-control" id="details" name="details" readonly>
+                        <input type="text" class="form-control" id="details" name="details">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -513,7 +438,7 @@
 </div>
 
 
-<!--  Update Modal-->
+<!--  EDIT Modal-->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -525,9 +450,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form th:action="@{/countries/update}" method="put">
+                <form th:action="@{/states/update}" method="put">
                     <div class="form-group">
-                        <label for="description" class="col-form-label">ID:</label>
+                        <label for="idEdit" class="col-form-label">ID:</label>
                         <input type="text" class="form-control" id="idEdit" name="id" readonly>
                     </div>
 
@@ -543,8 +468,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="description" class="col-form-label">Description:</label>
-                        <input type="text" class="form-control" id="descriptionEdit" name="description">
+                        <label for="name" class="col-form-label">Description:</label>
+                        <input type="text" class="form-control" id="nameEdit" name="name">
                     </div>
                     <div class="form-group">
                         <label for="capital" class="col-form-label">Capital:</label>
@@ -555,12 +480,8 @@
                         <input type="text" class="form-control" id="codeEdit" name="code">
                     </div>
                     <div class="form-group">
-                        <label for="continent" class="col-form-label">Continent:</label>
-                        <input type="text" class="form-control" id="continentEdit" name="continent">
-                    </div>
-                    <div class="form-group">
-                        <label for="nationality" class="col-form-label">Nationality:</label>
-                        <input type="text" class="form-control" id="nationalityEdit" name="nationality">
+                        <label for="details" class="col-form-label">Details:</label>
+                        <input type="text" class="form-control" id="detailsEdit" name="details">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -575,6 +496,8 @@
     </div>
 </div>
 
+
+<!--DETAILS MODAL-->
 <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <form>
         <div class="modal-dialog" role="document">

@@ -19,12 +19,12 @@ $(document).ready(function () {
         event.preventDefault();
         let href = $(this).attr('href');
         $.get(href, function (country, status) {
-            $('#idEdit').val(country.id);
-            $('#descriptionEdit').val(country.description);
-            $('#capitalEdit').val(country.capital);
-            $('#codeEdit').val(country.code);
-            $('#continentEdit').val(country.continent);
-            $('#nationalityEdit').val(country.nationality);
+            $('#idDetails').val(country.id);
+            $('#descriptionDetails').val(country.description);
+            $('#capitalDetails').val(country.capital);
+            $('#codeDetails').val(country.code);
+            $('#continentDetails').val(country.continent);
+            $('#nationalityDetails').val(country.nationality);
         });
 
         $('#detailsModal').modal();
