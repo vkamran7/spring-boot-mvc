@@ -18,7 +18,7 @@ public class VehicleMakeService {
         this.vehicleMakeRepository = vehicleMakeRepository;
     }
 
-    public List<VehicleMake> getLocations() {
+    public List<VehicleMake> getVehicleMakes() {
         return vehicleMakeRepository.findAll();
     }
 

@@ -18,7 +18,7 @@ public class InvoiceStatusService {
         this.invoiceStatusRepository = invoiceStatusRepository;
     }
 
-    public List<InvoiceStatus> getLocations() {
+    public List<InvoiceStatus> getInvoiceStatues() {
         return invoiceStatusRepository.findAll();
     }
 

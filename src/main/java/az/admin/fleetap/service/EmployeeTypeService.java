@@ -16,7 +16,7 @@ public class EmployeeTypeService {
         this.employeeTypeRepository = employeeTypeRepository;
     }
 
-    public List<EmployeeType> getLocations() {
+    public List<EmployeeType> getEmployeeTypes() {
         return employeeTypeRepository.findAll();
     }
 

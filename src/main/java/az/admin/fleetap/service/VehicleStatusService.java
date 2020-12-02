@@ -16,7 +16,7 @@ public class VehicleStatusService {
         this.vehicleStatusRepository = vehicleStatusRepository;
     }
 
-    public List<VehicleStatus> getLocations() {
+    public List<VehicleStatus> getVehicleStatuses() {
         return vehicleStatusRepository.findAll();
     }
 

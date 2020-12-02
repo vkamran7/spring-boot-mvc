@@ -16,7 +16,7 @@ public class JobTitleService {
         this.jobTitleRepository = jobTitleRepository;
     }
 
-    public List<JobTitle> getLocations() {
+    public List<JobTitle> getJobTitles() {
         return jobTitleRepository.findAll();
     }
 
