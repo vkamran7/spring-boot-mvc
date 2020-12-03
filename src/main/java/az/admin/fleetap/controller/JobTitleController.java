@@ -42,7 +42,7 @@ public class JobTitleController {
         return "redirect:/jobTitles";
     }
 
-    @GetMapping("/locations/findById")
+    @GetMapping("/jobTitles/findById")
     @ResponseBody
     public Optional<JobTitle> findById(int id) {
         return jobTitleService.findById(id);
