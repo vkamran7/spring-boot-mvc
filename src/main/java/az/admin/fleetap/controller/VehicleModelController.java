@@ -17,10 +17,6 @@ import java.util.Optional;
 
 @Controller
 public class VehicleModelController {
-//    @GetMapping("/vehicleModel")
-//    public String getCountries() {
-//        return "vehicleModel";
-//    }
 
     private final VehicleModelService vehicleModelService;
 

@@ -16,11 +16,6 @@ import java.util.Optional;
 @Controller
 public class ClientController {
 
-//    @GetMapping("/clients")
-//    public String getCountries() {
-//        return "clients";
-//    }
-
     private final ClientService clientService;
     private final CountryService countryService;
     private final StateService stateService;
